@@ -1,0 +1,151 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 14%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 196 77% 55%;
+    --primary-foreground: 222 47% 11%;
+
+    --secondary: 291 86% 61%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 269 56% 66%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 224 76% 48%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-cyber-darkPurple text-foreground font-cyber;
+    background-image: 
+      radial-gradient(circle at 50% 30%, rgba(139, 92, 246, 0.1), transparent 30%),
+      radial-gradient(circle at 90% 20%, rgba(217, 70, 239, 0.08), transparent 20%),
+      radial-gradient(circle at 10% 40%, rgba(30, 174, 219, 0.08), transparent 20%);
+    background-size: 100% 100%;
+    background-attachment: fixed;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #1A1F2C;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #1EAEDB;
+    border-radius: 6px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #D946EF;
+  }
+}
+
+@layer components {
+  .cyber-btn {
+    @apply relative overflow-hidden font-cyber py-3 px-8 rounded-sm text-white 
+    transition-all duration-300 bg-cyber-darkPurple border-2 border-cyber-blue 
+    shadow-neon-blue hover:shadow-neon-magenta hover:border-cyber-magenta;
+  }
+  
+  .cyber-btn::before {
+    @apply content-[''] absolute top-0 left-[-100%] w-full h-full bg-gradient-to-r 
+    from-transparent via-cyber-blue/30 to-transparent transition-all duration-500;
+  }
+  
+  .cyber-btn:hover::before {
+    @apply left-[100%];
+  }
+  
+  .cyber-card {
+    @apply bg-cyber-darkPurple/80 backdrop-blur-sm border-l-2 border-t-2 rounded-md overflow-hidden
+    hover:shadow-neon-blue transition-all duration-300;
+  }
+
+  .cyber-title {
+    @apply font-cyber text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight;
+  }
+
+  .cyber-subtitle {
+    @apply font-cyber text-xl md:text-2xl text-cyber-blue font-semibold;
+  }
+
+  .glitch-text {
+    @apply relative text-white inline-block;
+  }
+
+  .glitch-text::before,
+  .glitch-text::after {
+    @apply content-[attr(data-text)] absolute left-0 top-0 w-full h-full;
+  }
+
+  .glitch-text::before {
+    @apply text-cyber-magenta left-[2px] animate-glitch;
+    clip: rect(44px, 450px, 56px, 0);
+  }
+
+  .glitch-text::after {
+    @apply text-cyber-blue left-[-2px] animate-glitch;
+    clip: rect(24px, 450px, 36px, 0);
+    animation-delay: 0.1s;
+  }
+
+  .digital-rain-container {
+    @apply fixed top-0 left-0 w-full h-full pointer-events-none z-[-1] overflow-hidden;
+  }
+
+  .digital-rain {
+    @apply absolute top-0 text-cyber-blue text-opacity-60 animate-digital-rain whitespace-nowrap leading-none;
+  }
+
+  .neon-border {
+    @apply relative border overflow-hidden;
+  }
+
+  .neon-border::before {
+    @apply content-[''] absolute -inset-[3px] bg-gradient-to-r from-cyber-blue via-cyber-magenta to-cyber-purple z-[-1];
+    animation: border-rotate 3s linear infinite;
+  }
+
+  @keyframes border-rotate {
+    100% {
+      transform: rotate(1turn);
+    }
+  }
+
+  .cyber-grid {
+    @apply bg-cyber-grid bg-[20px_20px];
+  }
+}
